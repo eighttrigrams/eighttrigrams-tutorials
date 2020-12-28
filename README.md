@@ -51,6 +51,8 @@ you can very easily set up projects, following very limited conventions.
   (greet (first args)))
 ```
 
+Run it
+
 ```bash
 examples/greeter-1$ clj -m hello Daniel
 "Hello, Daniel!"
@@ -59,12 +61,37 @@ examples/greeter-1$ clj -m hello Daniel
 Adhering to these conventions one can access the application from the repl.
 
     examples/greeter-1$ clj
-    Clojure 1.9.0
     user=> (require '[greeter :refer :all])
-    nil
     user=> (greet "Daniel")
     "Hello, Daniel!"
-    nil
+
+Clojure namespaces correspond to Java namespaces, such that the file hierarchy 
+aligns with the namespace names. In the next example greeter is located one level below
+from where it was in the last example.
+
+[./examples/greeter-2/src/greeter/greeter.clj](./examples/greeter-2/src/greeter/greeter.clj):
+
+```clojure
+(ns greeter.greeter)
+(defn greet [name] 
+  (prn (str "Hello, " name "!")))
+```
+
+[./examples/greeter-2/src/hello.clj](./examples/greeter-2/src/hello.clj):
+
+```clojure
+(ns hello
+  (:require [greeter.greeter :refer :all]))
+(defn -main [& args]
+  (greet (first args)))
+```
+
+Inside the repl one can access it then.
+
+    examples/greeter-1$ clj
+    user=> (require '[greeter.greeter :refer :all])
+    user=> (greet "Daniel")
+    "Hello, Daniel!"
 
 ## Minimalistic dependency management
 
