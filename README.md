@@ -26,10 +26,9 @@ arrow up button. Now this is done just calling `clj`.
 
 You also can put code into a file and execute it from the command line.
 
-[./examples/hello.clj](./examples/hello.clj):
+[./examples/add-1.clj](./examples/add-1.clj):
 
 ```clojure
-(defn add [a b] (+ a b))
 (prn (add 1 1))
 ```
 
@@ -38,11 +37,18 @@ Run it as a script with
     examples$ clj hello.clj
     2
 
-or load the script from the repl
+or load a script 
+
+[./examples/add-2.clj](./examples/add-2.clj):
+
+```clojure
+(defn add [a b] (+ a b))
+```
+
+from the repl
 
     examples$ clj
     user=> (clojure.main/load-script "hello.clj")
-    2
     user=> (add 2 2)
     4
 
