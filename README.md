@@ -212,6 +212,16 @@ Ran 1 tests containing 1 assertions.
 0 failures, 0 errors.
 ```
 
+With the Cognitect test runner 
+test suites in the form of namespaces (separete segments with `.`)
+can be executed by
+
+    clj -Atest -nadder-test
+
+and single tests with (separate test name from namespace with `/`)
+
+    clj -Atest -vadder-test/test-adder
+
 ## Leiningen
 
 A more powerful build tool is **Leiningen** (or **lein** for short). The greeter example
