@@ -9,6 +9,8 @@ An installation of `Clojure` including the `clj` tool as well as `Leiningen`.
 
 ## Running code
 
+## The REPL
+
 As soon as you have installed **Clojure**, you can start a **repl** (read-eval-print-loop) 
 session.
 
@@ -20,12 +22,15 @@ Before `clj` there was (and still is) the `clojure` command. Typically one used 
 call it with `rlwrap` as in `rlwrap clojure` to have a command line history via the
 arrow up button. Now this is done just calling `clj`.
 
+## Scripting
+
 You also can put code into a file and execute it from the command line.
 
 [./examples/hello.clj](./examples/hello.clj):
 
 ```clojure
-(prn (+ 1 1))
+(defn add [a b] (+ a b))
+(prn (add 1 1))
 ```
 
 Run it as a script with
@@ -33,9 +38,16 @@ Run it as a script with
     examples$ clj hello.clj
     2
 
-One can read clojure other scripts from clojure script files as well as from the repl,
-to edit code more comfortably in your favourite editor. However, there is a much better
-way in Clojure, where it is very easy to set up 
+or load the script from the repl
+
+    examples$ clj
+    user=> (clojure.main/load-script "hello.clj")
+    2
+    user=> (add 2 2)
+    4
+
+One can read further Clojure scripts from Clojure script files. 
+However, there is a much better way in Clojure, where it is very easy to set up 
 
 ## Minimal projects
 
