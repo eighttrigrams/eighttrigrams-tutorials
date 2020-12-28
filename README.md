@@ -94,3 +94,29 @@ which is also part of the language.
     
     Ran 1 tests containing 1 assertions.
     0 failures, 0 errors.
+
+A more powerful build tool is **Leiningen* (or **lein** for short). The greeter example
+looks like this, using the opportunity to show how Java can be mixed in when using Leiningen.
+
+    ./examples/greeter-3/src/clj/hello.clj:
+    (ns hello 
+      (:import Greeter))
+    (defn -main [& args]
+      (Greeter/greet (first args)))
+
+    ./examples/greeter-3/src/java/Greeter.java:
+    public class Greeter {
+        public static void greet(String name) {
+            System.out.println("Hello, " + name + "!");
+        }
+    }
+
+    ./examples/greeter-3/project.clj:
+    (defproject greeter-3 "0.1.0-SNAPSHOT"
+    :dependencies [[org.clojure/clojure "1.10.0"]]
+    :main ^:skip-aot hello
+    :source-paths      ["src/clj"]
+    :java-source-paths ["src/java"])
+
+    examples/greeter-3$ lein run Daniel
+    Hello, Daniel!
