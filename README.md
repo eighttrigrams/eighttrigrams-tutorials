@@ -287,3 +287,34 @@ Run it with
 examples/lein-greeter$ lein run Daniel
 Hello, Daniel!
 ```
+
+## Details
+
+### Requiring namespaces 
+
+Note that we have seen different calls to `require` depending on if it was part
+of a namespace declaration as in 
+
+```clojure
+(ns hello
+  (:require [greeter :refer :all]))
+```
+or when called in the REPL
+```
+user=> (require '[greeter :refer :all])
+```
+
+Also there was an `import` call, which is used with Java classes.
+
+```clojure
+(ns hello 
+  (:import Greeter))
+```
+
+There is also `use`, which is a combination of require and refer, but
+from what I've read is discouraged in favour of using the latter.
+
+### Namespaces and filenames
+
+Note that when a namespace contains `-` as in `the-greeter` the filename
+has to be `the_greeter.clj`.
