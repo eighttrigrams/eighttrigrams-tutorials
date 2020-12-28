@@ -16,6 +16,10 @@ session.
     user=> (+ 1 1)
     2
 
+Before `clj` there was (and still is) the `clojure` command. Typically one used to
+call it with `rlwrap` as in `rlwrap clojure` to have a command line history via the
+arrow up button. Now this is done just calling `clj`.
+
 You also can put code into a file and execute it from the command line.
 
 [./examples/hello.clj](./examples/hello.clj):
