@@ -92,7 +92,7 @@ which is also part of the language.
     Ran 1 tests containing 1 assertions.
     0 failures, 0 errors.
 
-A more powerful build tool is **Leiningen* (or **lein** for short). The greeter example
+A more powerful build tool is **Leiningen** (or **lein** for short). The greeter example
 looks like this, using the opportunity to show how Java can be mixed in when using Leiningen.
 
     ./examples/greeter-3/src/clj/hello.clj:
