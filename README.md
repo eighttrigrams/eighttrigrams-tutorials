@@ -108,7 +108,7 @@ examples/greeter-2/application$ clj -m hello Daniel
 
 Again, we can "reach" inside the application using the repl.
 
-    greeter-2/application$ clj
+    examples/greeter-2/application$ clj
     Clojure 1.9.0
     user=> (require '[greeter :refer :all])
     nil
