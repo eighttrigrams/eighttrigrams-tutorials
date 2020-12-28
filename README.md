@@ -52,7 +52,7 @@ from the repl
     user=> (add 2 2)
     4
 
-One can read further Clojure scripts from Clojure script files. 
+One can read other Clojure scripts from Clojure script files. 
 However, there is a much better way in Clojure, where it is very easy to set up 
 
 ## Minimal projects
