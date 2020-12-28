@@ -1,5 +1,14 @@
 # Clojure
 
+This is intended to bridge the gap between language-focused tutorials and setting 
+up a projects.
+
+## Prerequisites
+
+An installation of `Clojure` including the `clj` tool as well as `Leiningen`.
+
+## Running code
+
 As soon as you have installed **Clojure**, you can start a **repl** (read-eval-print-loop) 
 session.
 
@@ -14,6 +23,8 @@ You also can put code into a file and execute it from the command line.
 
     examples$ clj hello.clj
     2
+
+## Minimal projects
 
 As soon as you want to distribute code across multiple source files, 
 you can very easily set up projects, following very limited conventions. 
@@ -49,6 +60,8 @@ Adhering to these conventions one can access the application from the repl.
     user=> (greet "Daniel")
     "Hello, Daniel!"
     nil
+
+## Minimalistic dependency management
 
 The first build tool you should check out is **deps.edn**. 
 It comes as part of the language and allows you to use dependencies, 
@@ -93,10 +106,11 @@ examples/greeter-2/application$ clj -m hello Daniel
 "Hello, Daniel!"
 ```
 
+## Minimalistic testing
+
 Using it you can install a test runner, which 
 facilitates writing unit tests with **clojure.test**, 
 which is also part of the language.
-
 
 [./examples/adder/deps.edn](./examples/adder/deps.edn):
 
@@ -137,6 +151,8 @@ Testing adder-test
 Ran 1 tests containing 1 assertions.
 0 failures, 0 errors.
 ```
+
+## Leiningen
 
 A more powerful build tool is **Leiningen** (or **lein** for short). The greeter example
 looks like this, using the opportunity to show how Java can be mixed in when using Leiningen.
