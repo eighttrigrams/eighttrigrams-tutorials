@@ -18,7 +18,7 @@ You also can put code into a file and execute it from the command line.
 As soon as you want to distribute code across multiple source files, 
 you can very easily set up projects, following very limited conventions. 
 
-./examples/greeter-1/src/greeter.clj:
+[./examples/greeter-1/src/greeter.clj](./examples/greeter-1/src/greeter.clj):
 
 ```clojure
 (ns greeter)
@@ -26,7 +26,7 @@ you can very easily set up projects, following very limited conventions.
   (prn (str "Hello, " name "!")))
 ```
 
-./examples/greeter-1/src/hello.clj:
+[./examples/greeter-1/src/hello.clj](./examples/greeter-1/src/hello.clj):
 
 ```clojure
 (ns hello
@@ -56,7 +56,7 @@ from maven, from github, as well
 as on the local file system, such that the files from the last 
 example could also be laid out as follows:
 
-./examples/greeter-2/application/deps.edn:
+[./examples/greeter-2/application/deps.edn](./examples/greeter-2/application/deps.edn):
 
 ```clojure
     {:deps
@@ -69,7 +69,7 @@ example could also be laid out as follows:
 {}
 ```
 
-./examples/greeter-2/library/src/greeter.clj:
+[./examples/greeter-2/library/src/greeter.clj](./examples/greeter-2/library/src/greeter.clj):
 
 ```clojure
 (ns greeter)
@@ -77,7 +77,7 @@ example could also be laid out as follows:
   (prn (str "Hello, " name "!")))
 ```
 
-./examples/greeter-2/application/src/hello.clj:
+[./examples/greeter-2/application/src/hello.clj](./examples/greeter-2/application/src/hello.clj):
 
 ```clojure
 (ns hello
@@ -98,7 +98,7 @@ facilitates writing unit tests with **clojure.test**,
 which is also part of the language.
 
 
-./examples/adder/deps.edn:
+[./examples/adder/deps.edn](./examples/adder/deps.edn):
 
 ```clojure
 {
@@ -110,13 +110,13 @@ which is also part of the language.
 }
 ```
 
-./examples/adder/src/adder.clj:
+[./examples/adder/src/adder.clj](./examples/adder/src/adder.clj):
 ```clojure
 (ns adder)
 (defn add [a b] (+ a b))
 ```
 
-./examples/adder/test/adder_test.clj:
+[./examples/adder/test/adder_test.clj](./examples/adder/test/adder_test.clj):
 
 ```clojure
 (ns adder-test
@@ -141,7 +141,7 @@ Ran 1 tests containing 1 assertions.
 A more powerful build tool is **Leiningen** (or **lein** for short). The greeter example
 looks like this, using the opportunity to show how Java can be mixed in when using Leiningen.
 
-./examples/greeter-3/src/clj/hello.clj:
+[./examples/greeter-3/src/clj/hello.clj](./examples/greeter-3/src/clj/hello.clj):
 
 ```clojure
 (ns hello 
@@ -150,7 +150,7 @@ looks like this, using the opportunity to show how Java can be mixed in when usi
   (Greeter/greet (first args)))
 ```
 
-./examples/greeter-3/src/java/Greeter.java:
+[./examples/greeter-3/src/java/Greeter.java](./examples/greeter-3/src/java/Greeter.java):
 ```java
 public class Greeter {
     public static void greet(String name) {
@@ -159,7 +159,7 @@ public class Greeter {
 }
 ```
 
-./examples/greeter-3/project.clj:
+[./examples/greeter-3/project.clj](./examples/greeter-3/project.clj):
 
 ```clojure
 (defproject greeter-3 "0.1.0-SNAPSHOT"
