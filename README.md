@@ -32,6 +32,16 @@ you can very easily set up projects, following very limited conventions.
     examples/greeter-1$ clj -m hello Daniel
     "Hello, Daniel!"
 
+Adhering to these conventions one can access the application from the repl.
+
+    greeter-1$ clj
+    Clojure 1.9.0
+    user=> (require '[greeter :refer :all])
+    nil
+    user=> (greet "Daniel")
+    "Hello, Daniel!"
+    nil
+
 The first build tool you should check out is **deps.edn**. 
 It comes as part of the language and allows you to use dependencies, 
 from maven, from github, as well
