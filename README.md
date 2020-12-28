@@ -34,7 +34,7 @@ You also can put code into a file and execute it from the command line.
 
 Run it as a script with
 
-    examples$ clj hello.clj
+    examples$ clj add-1.clj
     2
 
 or load a script 
