@@ -63,7 +63,7 @@ example could also be laid out as follows:
      {greeter {:local/root "../library"}}}
 ```
 
-./examples/greeter-2/library/deps.edn:
+[./examples/greeter-2/library/deps.edn](./examples/greeter-2/library/deps.edn):
 
 ```clojure
 {}
