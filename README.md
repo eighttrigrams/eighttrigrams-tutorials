@@ -63,9 +63,6 @@ Using it you can install a test runner, which
 facilitates writing unit tests with **clojure.test**, 
 which is also part of the language.
 
-    ./examples/adder/
-    ./examples/adder/src/
-    ./examples/adder/test/
 
     ./examples/adder/deps.edn:
     {
