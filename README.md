@@ -28,10 +28,14 @@ You also can put code into a file and execute it from the command line.
 (prn (+ 1 1))
 ```
 
-Run it with
+Run it as a script with
 
     examples$ clj hello.clj
     2
+
+One can read clojure other scripts from clojure script files as well as from the repl,
+to edit code more comfortably in your favourite editor. However, there is a much better
+way in Clojure, where it is very easy to set up 
 
 ## Minimal projects
 
