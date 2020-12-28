@@ -48,7 +48,7 @@ or load a script
 from the repl
 
     examples$ clj
-    user=> (clojure.main/load-script "hello.clj")
+    user=> (clojure.main/load-script "add-2.clj")
     user=> (add 2 2)
     4
 
