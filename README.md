@@ -18,8 +18,13 @@ session.
 
 You also can put code into a file and execute it from the command line.
 
-    ./examples/hello.clj:
-    (prn (+ 1 1))
+./examples/hello.clj:
+
+```clojure
+(prn (+ 1 1))
+```
+
+Run it with
 
     examples$ clj hello.clj
     2
