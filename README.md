@@ -124,6 +124,19 @@ Again, we can "reach" inside the application using the repl.
 This of course does work not only for local libraries, 
 but for dependencies from github and maven as well.
 
+[./examples/deps/deps.edn](./examples/deps/deps.edn):
+
+```clojure
+{:deps {org.clojure/java.classpath {:mvn/version "1.0.0"}}}
+```
+
+    examples/deps$ clj
+    Clojure 1.9.0
+    user=> (require '[clojure.java.classpath :refer :all])
+    nil
+    user=> (system-classpath)
+    [Shows classpath info]
+
 ## Minimalistic testing
 
 Using it you can install a test runner, which 
