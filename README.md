@@ -213,7 +213,7 @@ Ran 1 tests containing 1 assertions.
 ```
 
 With the Cognitect test runner 
-test suites in the form of namespaces (separete segments with `.`)
+test suites in the form of namespaces (separate namespace segments after `-n` with `.`)
 can be executed by
 
     clj -Atest -nadder-test
