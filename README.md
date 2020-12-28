@@ -74,20 +74,20 @@ from maven, from github, as well
 as on the local file system, such that the files from the last 
 example could also be laid out as follows:
 
-[./examples/greeter-2/application/deps.edn](./examples/greeter-2/application/deps.edn):
+[./examples/deps-greeter/application/deps.edn](./examples/deps-greeter/application/deps.edn):
 
 ```clojure
 {:deps
  {greeter {:local/root "../library"}}}
 ```
 
-[./examples/greeter-2/library/deps.edn](./examples/greeter-2/library/deps.edn):
+[./examples/deps-greeter/library/deps.edn](./examples/deps-greeter/library/deps.edn):
 
 ```clojure
 {}
 ```
 
-[./examples/greeter-2/library/src/greeter.clj](./examples/greeter-2/library/src/greeter.clj):
+[./examples/deps-greeter/library/src/greeter.clj](./examples/deps-greeter/library/src/greeter.clj):
 
 ```clojure
 (ns greeter)
@@ -95,7 +95,7 @@ example could also be laid out as follows:
   (prn (str "Hello, " name "!")))
 ```
 
-[./examples/greeter-2/application/src/hello.clj](./examples/greeter-2/application/src/hello.clj):
+[./examples/deps-greeter/application/src/hello.clj](./examples/deps-greeter/application/src/hello.clj):
 
 ```clojure
 (ns hello
@@ -107,13 +107,13 @@ example could also be laid out as follows:
 Run it with
 
 ```bash
-examples/greeter-2/application$ clj -m hello Daniel
+examples/deps-greeter/application$ clj -m hello Daniel
 "Hello, Daniel!"
 ```
 
 Again, we can "reach" inside the application using the repl.
 
-    examples/greeter-2/application$ clj
+    examples/deps-greeter/application$ clj
     Clojure 1.9.0
     user=> (require '[greeter :refer :all])
     nil
@@ -188,7 +188,7 @@ Ran 1 tests containing 1 assertions.
 A more powerful build tool is **Leiningen** (or **lein** for short). The greeter example
 looks like this, using the opportunity to show how Java can be mixed in when using Leiningen.
 
-[./examples/greeter-3/src/clj/hello.clj](./examples/greeter-3/src/clj/hello.clj):
+[./examples/lein-greeter/src/clj/hello.clj](./examples/lein-greeter/src/clj/hello.clj):
 
 ```clojure
 (ns hello 
@@ -197,7 +197,7 @@ looks like this, using the opportunity to show how Java can be mixed in when usi
   (Greeter/greet (first args)))
 ```
 
-[./examples/greeter-3/src/java/Greeter.java](./examples/greeter-3/src/java/Greeter.java):
+[./examples/lein-greeter/src/java/Greeter.java](./examples/lein-greeter/src/java/Greeter.java):
 ```java
 public class Greeter {
     public static void greet(String name) {
@@ -206,10 +206,10 @@ public class Greeter {
 }
 ```
 
-[./examples/greeter-3/project.clj](./examples/greeter-3/project.clj):
+[./examples/lein-greeter/project.clj](./examples/lein-greeter/project.clj):
 
 ```clojure
-(defproject greeter-3 "0.1.0-SNAPSHOT"
+(defproject lein-greeter "0.1.0-SNAPSHOT"
 :dependencies [[org.clojure/clojure "1.10.0"]]
 :main ^:skip-aot hello
 :source-paths      ["src/clj"]
@@ -219,6 +219,6 @@ public class Greeter {
 Run it with
 
 ```bash
-examples/greeter-3$ lein run Daniel
+examples/lein-greeter$ lein run Daniel
 Hello, Daniel!
 ```
