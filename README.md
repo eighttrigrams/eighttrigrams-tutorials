@@ -72,8 +72,8 @@ example could also be laid out as follows:
 [./examples/greeter-2/application/deps.edn](./examples/greeter-2/application/deps.edn):
 
 ```clojure
-    {:deps
-     {greeter {:local/root "../library"}}}
+{:deps
+ {greeter {:local/root "../library"}}}
 ```
 
 [./examples/greeter-2/library/deps.edn](./examples/greeter-2/library/deps.edn):
@@ -105,6 +105,19 @@ Run it with
 examples/greeter-2/application$ clj -m hello Daniel
 "Hello, Daniel!"
 ```
+
+Again, we can "reach" inside the application using the repl.
+
+    greeter-2/application$ clj
+    Clojure 1.9.0
+    user=> (require '[greeter :refer :all])
+    nil
+    user=> (greet "Daniel")
+    "Hello, Daniel!"
+    nil
+
+This of course does work not only for local libraries, 
+but for dependencies from github and maven as well.
 
 ## Minimalistic testing
 
