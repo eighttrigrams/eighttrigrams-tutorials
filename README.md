@@ -53,7 +53,7 @@ examples/greeter-1$ clj -m hello Daniel
 
 Adhering to these conventions one can access the application from the repl.
 
-    greeter-1$ clj
+    examples/greeter-1$ clj
     Clojure 1.9.0
     user=> (require '[greeter :refer :all])
     nil
