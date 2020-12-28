@@ -65,6 +65,8 @@ Adhering to these conventions one can access the application from the repl.
     user=> (greet "Daniel")
     "Hello, Daniel!"
 
+### Namespaces
+
 Clojure namespaces correspond to Java namespaces, such that the file hierarchy 
 aligns with the namespace names. In the next example greeter is located one level below
 from where it was in the last example.
