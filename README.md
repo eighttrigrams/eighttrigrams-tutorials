@@ -11,7 +11,7 @@ An installation of `Clojure` including the `clj` tool as well as `Leiningen`.
 
 ## The REPL
 
-As soon as you have installed **Clojure**, you can start a **repl** (read-eval-print-loop) 
+As soon as you have installed **Clojure**, you can start a **REPL** (read-eval-print-loop) 
 session.
 
     $ clj
@@ -45,7 +45,7 @@ or load a script
 (defn add [a b] (+ a b))
 ```
 
-from the repl
+from the REPL
 
     examples$ clj
     user=> (clojure.main/load-script "add-2.clj")
@@ -84,7 +84,7 @@ examples/greeter-1$ clj -m hello Daniel
 "Hello, Daniel!"
 ```
 
-Adhering to these conventions one can access the application from the repl.
+Adhering to these conventions one can access the application from the REPL.
 
     examples/greeter-1$ clj
     user=> (require '[greeter :refer :all])
@@ -114,7 +114,7 @@ from where it was in the last example.
   (greet (first args)))
 ```
 
-Inside the repl one can access it then.
+Inside the REPL one can access it then.
 
     examples/greeter-1$ clj
     user=> (require '[greeter.greeter :refer :all])
@@ -166,7 +166,7 @@ examples/deps-greeter/application$ clj -m hello Daniel
 "Hello, Daniel!"
 ```
 
-Again, we can "reach" inside the application using the repl.
+Again, we can "reach" inside the application using the REPL.
 
     examples/deps-greeter/application$ clj
     Clojure 1.9.0
