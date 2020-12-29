@@ -290,8 +290,13 @@ Hello, Daniel!
 
 ### Tests
 
-The project structure is the same as in the the `adder` example. See
-[./examples/lein-adder/src/adder.clj](./examples/lein-adder/src/adder.clj) and
+The project structure is the same as in the the `adder` example. 
+
+See
+[./examples/lein-adder/src/adder.clj](./examples/lein-adder/src/adder.clj) 
+
+and
+
 [./examples/lein-adder/test/adder_test.clj](./examples/lein-adder/test/adder_test.clj).
 
 [./examples/lein-adder/project.clj](./examples/lein-adder/project.clj):
