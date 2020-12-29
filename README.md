@@ -300,7 +300,7 @@ and
 
 [./examples/lein-adder/test/adder_test.clj](./examples/lein-adder/test/adder_test.clj).
 
-The project description
+The project description now includes the `test` path. 
 
 [./examples/lein-adder/project.clj](./examples/lein-adder/project.clj):
 
