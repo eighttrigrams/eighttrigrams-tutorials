@@ -290,7 +290,7 @@ Hello, Daniel!
 
 ### Tests
 
-The project structure is the same as in the the `adder` example. 
+The project structure is the same as in the the `examples/adder` example. 
 
 See
 
