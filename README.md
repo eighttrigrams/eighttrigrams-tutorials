@@ -300,6 +300,8 @@ and
 
 [./examples/lein-adder/test/adder_test.clj](./examples/lein-adder/test/adder_test.clj).
 
+The project description
+
 [./examples/lein-adder/project.clj](./examples/lein-adder/project.clj):
 
 ```clojure
