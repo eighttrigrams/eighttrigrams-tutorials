@@ -288,6 +288,37 @@ examples/lein-greeter$ lein run Daniel
 Hello, Daniel!
 ```
 
+### Tests
+
+The project structure is the same as in the the `adder` example. See
+[./examples/lein-adder/src/adder.clj](./examples/lein-adder/src/adder.clj) and
+[./examples/lein-adder/test/adder_test.clj](./examples/lein-adder/test/adder_test.clj).
+
+[./examples/lein-adder/project.clj](./examples/lein-adder/project.clj):
+
+```clojure
+(defproject greeter-3 "0.1.0-SNAPSHOT"
+:dependencies [[org.clojure/clojure "1.10.0"]]
+:main ^:skip-aot hello
+:source-paths      ["src" "test"])
+```
+
+Run tests
+
+    examples/lein-adder$ lein test
+    lein test adder-test
+
+    Ran 1 tests containing 1 assertions.
+    0 failures, 0 errors.
+
+Test a single namespace
+
+    examples/lein-adder$ lein test :only adder-test
+
+or execute a single test
+
+    examples/lein-adder$ lein test :only adder-test/test-adder
+
 ## Details
 
 ### Requiring namespaces 
