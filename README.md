@@ -29,7 +29,7 @@ You also can put code into a file and execute it from the command line.
 [./examples/add-1.clj](./examples/add-1.clj):
 
 ```clojure
-(prn (add 1 1))
+(prn (+ 1 1))
 ```
 
 Run it as a script with
@@ -42,7 +42,7 @@ or load a script
 [./examples/add-2.clj](./examples/add-2.clj):
 
 ```clojure
-(defn add [a b] (+ a b))
+(def add +)
 ```
 
 from the REPL
@@ -213,7 +213,7 @@ which is also part of the language.
 [./examples/adder/src/adder.clj](./examples/adder/src/adder.clj):
 ```clojure
 (ns adder)
-(defn add [a b] (+ a b))
+(def add +)
 ```
 
 [./examples/adder/test/adder_test.clj](./examples/adder/test/adder_test.clj):
