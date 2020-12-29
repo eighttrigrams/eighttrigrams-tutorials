@@ -290,7 +290,7 @@ Hello, Daniel!
 
 ### Tests
 
-The project structure is the same as in the the `examples/adder` example. 
+The src and test code is the same as in the the `examples/adder` example. 
 
 See
 
@@ -300,7 +300,7 @@ and
 
 [./examples/lein-adder/test/adder_test.clj](./examples/lein-adder/test/adder_test.clj).
 
-The project description now includes the `test` path. 
+The Leiningen project description includes the `test` path as an additional source path. 
 
 [./examples/lein-adder/project.clj](./examples/lein-adder/project.clj):
 
