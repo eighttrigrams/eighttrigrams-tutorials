@@ -328,7 +328,14 @@ or execute a single test
 
 ## Details
 
-### Requiring namespaces 
+### Namespaces and filenames
+
+Note that when a namespace contains `-` as in `the-greeter` the filename
+has to be `the_greeter.clj`.
+
+### Require
+
+#### require, use, import
 
 Note that we have seen different calls to `require` depending on if it was part
 of a namespace declaration as in 
@@ -352,7 +359,48 @@ Also there was an `import` call, which is used with Java classes.
 There is also `use`, which is a combination of require and refer, but
 from what I've read is discouraged in favour of using the latter.
 
-### Namespaces and filenames
+#### Require usage
 
-Note that when a namespace contains `-` as in `the-greeter` the filename
-has to be `the_greeter.clj`.
+Import more than one namespace
+
+```clojure
+(ns hello
+  (:require [greeter :refer :all]
+            [other :refer :all]))
+```
+
+To avoid namespace clashed one often requires and using shorthand.
+
+```clojure
+(ns hello
+  (:require [greeter :as g]))
+(g/greet "Daniel")
+```
+
+One can also import functions explicitly
+
+```clojure
+(ns hello
+  (:require [greeter :refer [greet]]))
+(greet "Daniel")
+```
+
+which works in combination with a shorthand.
+
+```clojure
+(ns hello
+  (:require [greeter :refer [greet] :as g]))
+(g/greet "Daniel")
+```
+
+Rename a function like this
+
+```clojure
+(ns hello
+  (:require [greeter :as g :refer [greet] :rename {greet gr}]))
+(g/gr "Daniel")
+```
+
+#### Scripting
+
+See `:reload` and `:reload-all` options of require.
