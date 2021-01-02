@@ -192,9 +192,14 @@ but for dependencies from github and maven as well.
     user=> (system-classpath)
     [Shows classpath info]
 
+Working with local dependencies is great, because code changes are directly
+available, like when you have the code in a separate namespace. Yet it already is
+in a form where it can be made a 'external' github dependency by just changing 
+from `:local/root` to `:git/url`.
+
 ## Minimalistic testing
 
-Using it you can install a test runner, which 
+Using the deps tool you can install a test runner, which 
 facilitates writing unit tests with **clojure.test**, 
 which is also part of the language.
 
