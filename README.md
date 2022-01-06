@@ -1,7 +1,7 @@
 # Clojure Tutorial
 
 This is intended to bridge the gap between language-focused tutorials and setting 
-up a projects.
+up a project.
 
 ## Prerequisites
 
