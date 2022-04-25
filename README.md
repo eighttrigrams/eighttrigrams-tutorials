@@ -123,6 +123,13 @@ greeter=> (greet "Daniel")
 **Note** that a `(require 'greeter)` call is necessary before we are able to 
 do this. If we don't, the function call we intend to do will not work. 
 
+So that is what the `user=>` prompt is about. It shows us that when we open the REPL we operate
+in the user namespace. One thing that is very useful to know is that we can create a namespace file
+`src/user.clj` (containing the usual `(ns user)` namespace declaration at the beginning) which may contain
+some arbitrary code which gets automatically executed
+when the REPL is started. Since the code can consist of function definitions as well as some function call on
+the top level, this is ideal for some initialization of the REPL-session that you may wish to perfom.
+
 ### Namespaces
 
 Clojure namespaces correspond to Java namespaces, such that the file hierarchy 
