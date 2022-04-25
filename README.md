@@ -87,7 +87,7 @@ examples/greeter_1$ clj -m hello Daniel
 Adhering to these conventions one can access the application from the REPL.
 
     examples/greeter_1$ clj
-    user=> (require 'greeter)
+    user=> (require 'greeter) ; the syntax differs slightly from how it is used in a file
     user=> (greeter/greet "Daniel")
     "Hello, Daniel!"
 
