@@ -112,9 +112,9 @@ from where it was in the last example.
 
 ```clojure
 (ns hello
-  (:require [greeter.greeter :refer :all]))
+  (:require greeter.greeter))
 (defn -main [& args]
-  (greet (first args)))
+  (greeter.greeter/greet (first args)))
 ```
 
 Inside the REPL one can access it then.
