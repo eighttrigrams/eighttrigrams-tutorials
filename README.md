@@ -130,7 +130,7 @@ some arbitrary code which gets automatically executed
 when the REPL is started. Since the code can consist of function definitions as well as some function call on
 the top level, this is ideal for some initialization of the REPL-session that you may wish to perfom.
 
-### Namespaces
+### More on namespaces
 
 Clojure namespaces correspond to Java namespaces, such that the file hierarchy 
 aligns with the namespace names. In the next example greeter is located one level below
