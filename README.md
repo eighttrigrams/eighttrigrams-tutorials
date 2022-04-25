@@ -61,7 +61,8 @@ As soon as you want to distribute code across multiple source files,
 you can very easily set up projects, following very limited conventions.
 The first of these is creating source files within a `src` subdirectory.
 The second one is having a correspondence between file names and namespace declarations
-at the beginning of the files. More on that below. But first let's look at an example.
+at the beginning of the files. More on namespaces is to be said in section after this one. Here
+it should mean for us just 'file' or 'context' or 'module'. But first let's look at an example.
 
 [examples/greeter_1/src/greeter.clj](./examples/greeter_1/src/greeter.clj):
 
@@ -109,7 +110,18 @@ transitively reload via
 user=> (require 'greeter :reload-all)
 ```
 
-After that, another function call to `greeter.greet` should reflect possible changes made to the function.
+After that, another function call to `greeter/greet` should reflect possible changes made to the function.
+
+We have yet another option to call our `greet` function, namely to jump into the `greeter` namespace
+and execute it from there. 
+
+```
+user=> (in-ns 'greeter)
+greeter=> (greet "Daniel")
+```
+
+**Note** that a `(require 'greeter)` call is necessary before we are able to 
+do this. If we don't, the function call we intend to do will not work. 
 
 ### Namespaces
 
