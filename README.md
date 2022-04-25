@@ -62,7 +62,7 @@ you can very easily set up projects, following very limited conventions.
 The first of these is creating source files within a `src` subdirectory.
 The second one is having a correspondence between file names and namespace declarations
 at the beginning of the files. More on namespaces is to be said in section after this one. Here
-it should mean for us just 'file' or 'context' or 'module'. But first let's look at an example.
+it should mean for us just *file* or *context* or *module*. But first let's look at an example.
 
 [examples/greeter_1/src/greeter.clj](./examples/greeter_1/src/greeter.clj):
 
