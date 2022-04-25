@@ -94,6 +94,23 @@ Adhering to these conventions one can access the application from the REPL.
     user=> (greeter/greet "Daniel")
     "Hello, Daniel!"
 
+In this case the `-main` function does not get executed. But now we can play around 
+with the application interactively. If we change something one of the files, we
+need to reload the corresponding namespace.
+
+```
+user=> (require 'greeter :reload)
+```
+ 
+If the namespace to be loaded depends on another namespace (let's say `greeter` depended on `greeter-helper`), and that one (i.e. `greeter-helper`) got changed, we can
+transitively reload via
+
+```
+user=> (require 'greeter :reload-all)
+```
+
+After that, another function call to `greeter.greet` should reflect possible changes made to the function.
+
 ### Namespaces
 
 Clojure namespaces correspond to Java namespaces, such that the file hierarchy 
