@@ -460,7 +460,3 @@ Rename a function like this
   (:require [greeter :as g :refer [greet] :rename {greet gr}]))
 (g/gr "Daniel")
 ```
-
-#### Scripting
-
-See `:reload` and `:reload-all` options of require.
