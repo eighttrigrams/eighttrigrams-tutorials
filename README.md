@@ -26,7 +26,7 @@ arrow up button. Now this is done just calling `clj`.
 
 You also can put code into a file and execute it from the command line.
 
-[./examples/add_1.clj](./examples/add_1.clj):
+[examples/add_1.clj](./examples/add_1.clj):
 
 ```clojure
 (prn (+ 1 1))
@@ -39,7 +39,7 @@ Run it as a script with
 
 or load a script 
 
-[./examples/add_2.clj](./examples/add_2.clj):
+[examples/add_2.clj](./examples/add_2.clj):
 
 ```clojure
 (def add +)
@@ -60,7 +60,7 @@ However, there is a much better way in Clojure, where it is very easy to set up
 As soon as you want to distribute code across multiple source files, 
 you can very easily set up projects, following very limited conventions. 
 
-[./examples/greeter_1/src/greeter.clj](./examples/greeter_1/src/greeter.clj):
+[examples/greeter_1/src/greeter.clj](./examples/greeter_1/src/greeter.clj):
 
 ```clojure
 (ns greeter)
@@ -68,7 +68,7 @@ you can very easily set up projects, following very limited conventions.
   (prn (str "Hello, " name "!")))
 ```
 
-[./examples/greeter_1/src/hello.clj](./examples/greeter_1/src/hello.clj):
+[examples/greeter_1/src/hello.clj](./examples/greeter_1/src/hello.clj):
 
 ```clojure
 (ns hello
@@ -97,7 +97,7 @@ Clojure namespaces correspond to Java namespaces, such that the file hierarchy
 aligns with the namespace names. In the next example greeter is located one level below
 from where it was in the last example.
 
-[./examples/greeter_2/src/greeter/greeter.clj](./examples/greeter_2/src/greeter/greeter.clj):
+[examples/greeter_2/src/greeter/greeter.clj](./examples/greeter_2/src/greeter/greeter.clj):
 
 ```clojure
 (ns greeter.greeter)
@@ -105,7 +105,7 @@ from where it was in the last example.
   (prn (str "Hello, " name "!")))
 ```
 
-[./examples/greeter_2/src/hello.clj](./examples/greeter_2/src/hello.clj):
+[examples/greeter_2/src/hello.clj](./examples/greeter_2/src/hello.clj):
 
 ```clojure
 (ns hello
@@ -129,20 +129,20 @@ from maven, from github, as well
 as on the local file system, such that the files from the last 
 example could also be laid out as follows:
 
-[./examples/deps_greeter/application/deps.edn](./examples/deps_greeter/application/deps.edn):
+[examples/deps_greeter/application/deps.edn](./examples/deps_greeter/application/deps.edn):
 
 ```clojure
 {:deps
  {greeter {:local/root "../library"}}}
 ```
 
-[./examples/deps_greeter/library/deps.edn](./examples/deps_greeter/library/deps.edn):
+[examples/deps_greeter/library/deps.edn](./examples/deps_greeter/library/deps.edn):
 
 ```clojure
 {}
 ```
 
-[./examples/deps_greeter/library/src/greeter.clj](./examples/deps_greeter/library/src/greeter.clj):
+[examples/deps_greeter/library/src/greeter.clj](./examples/deps_greeter/library/src/greeter.clj):
 
 ```clojure
 (ns greeter)
@@ -150,7 +150,7 @@ example could also be laid out as follows:
   (prn (str "Hello, " name "!")))
 ```
 
-[./examples/deps_greeter/application/src/hello.clj](./examples/deps_greeter/application/src/hello.clj):
+[examples/deps_greeter/application/src/hello.clj](./examples/deps_greeter/application/src/hello.clj):
 
 ```clojure
 (ns hello
@@ -179,7 +179,7 @@ Again, we can "reach" inside the application using the REPL.
 This of course does work not only for local libraries, 
 but for dependencies from github and maven as well.
 
-[./examples/deps/deps.edn](./examples/deps/deps.edn):
+[examples/deps/deps.edn](./examples/deps/deps.edn):
 
 ```clojure
 {:deps {org.clojure/java.classpath {:mvn/version "1.0.0"}}}
@@ -203,7 +203,7 @@ Using the deps tool you can install a test runner, which
 facilitates writing unit tests with **clojure.test**, 
 which is also part of the language.
 
-[./examples/adder/deps.edn](./examples/adder/deps.edn):
+[examples/adder/deps.edn](./examples/adder/deps.edn):
 
 ```clojure
 {
@@ -215,13 +215,13 @@ which is also part of the language.
 }
 ```
 
-[./examples/adder/src/adder.clj](./examples/adder/src/adder.clj):
+[examples/adder/src/adder.clj](./examples/adder/src/adder.clj):
 ```clojure
 (ns adder)
 (def add +)
 ```
 
-[./examples/adder/test/adder_test.clj](./examples/adder/test/adder_test.clj):
+[examples/adder/test/adder_test.clj](./examples/adder/test/adder_test.clj):
 
 ```clojure
 (ns adder-test
@@ -258,7 +258,7 @@ and single tests with (separate test name from namespace with `/`)
 A more powerful build tool is **Leiningen** (or **lein** for short). The greeter example
 looks like this, using the opportunity to show how Java can be mixed in when using Leiningen.
 
-[./examples/lein_greeter/src/clj/hello.clj](./examples/lein_greeter/src/clj/hello.clj):
+[examples/lein_greeter/src/clj/hello.clj](./examples/lein_greeter/src/clj/hello.clj):
 
 ```clojure
 (ns hello 
@@ -267,7 +267,7 @@ looks like this, using the opportunity to show how Java can be mixed in when usi
   (Greeter/greet (first args)))
 ```
 
-[./examples/lein_greeter/src/java/Greeter.java](./examples/lein_greeter/src/java/Greeter.java):
+[examples/lein_greeter/src/java/Greeter.java](./examples/lein_greeter/src/java/Greeter.java):
 ```java
 public class Greeter {
     public static void greet(String name) {
@@ -276,7 +276,7 @@ public class Greeter {
 }
 ```
 
-[./examples/lein_greeter/project.clj](./examples/lein_greeter/project.clj):
+[examples/lein_greeter/project.clj](./examples/lein_greeter/project.clj):
 
 ```clojure
 (defproject lein-greeter "0.1.0-SNAPSHOT"
@@ -299,15 +299,15 @@ The src and test code is the same as in the the `examples/adder` example.
 
 See
 
-[./examples/lein_adder/src/adder.clj](./examples/lein_adder/src/adder.clj) 
+[examples/lein_adder/src/adder.clj](./examples/lein_adder/src/adder.clj) 
 
 and
 
-[./examples/lein_adder/test/adder_test.clj](./examples/lein_adder/test/adder_test.clj).
+[examples/lein_adder/test/adder_test.clj](./examples/lein_adder/test/adder_test.clj).
 
 The Leiningen project description includes the `test` path as an additional source path. 
 
-[./examples/lein_adder/project.clj](./examples/lein_adder/project.clj):
+[examples/lein_adder/project.clj](./examples/lein_adder/project.clj):
 
 ```clojure
 (defproject lein-adder "0.1.0-SNAPSHOT"
