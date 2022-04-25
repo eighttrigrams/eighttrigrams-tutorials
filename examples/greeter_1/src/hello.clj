@@ -2,4 +2,4 @@
   (:require greeter))
 
 (defn -main [& args]
-  (greet (first args)))
+  (greeter/greet (first args)))
