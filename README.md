@@ -58,7 +58,10 @@ However, there is a much better way in Clojure, where it is very easy to set up
 ## Minimal projects
 
 As soon as you want to distribute code across multiple source files, 
-you can very easily set up projects, following very limited conventions. 
+you can very easily set up projects, following very limited conventions.
+The first of these is creating source files within a `src` subdirectory.
+The second one is having a correspondence between file names and namespace declarations
+at the beginning of the files. More on that below. But first let's look at an example.
 
 [examples/greeter_1/src/greeter.clj](./examples/greeter_1/src/greeter.clj):
 
@@ -120,6 +123,9 @@ Inside the REPL one can access it then.
     user=> (require '[greeter.greeter :refer :all])
     user=> (greet "Daniel")
     "Hello, Daniel!"
+
+Note that when using namespaces consisting of multiple segments, i.e. `the-greeter`, 
+the namespace declaration would be `(ns the-greeter)` (kebap-case) but the file name would be `the_greeter.clj` (snake case).
 
 ## Minimalistic dependency management
 
