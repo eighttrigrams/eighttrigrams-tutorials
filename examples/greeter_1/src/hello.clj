@@ -1,5 +1,5 @@
 (ns hello
-  (:require [greeter :refer :all]))
+  (:require greeter))
 
 (defn -main [& args]
   (greet (first args)))
