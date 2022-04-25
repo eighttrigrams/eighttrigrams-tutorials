@@ -87,8 +87,8 @@ examples/greeter_1$ clj -m hello Daniel
 Adhering to these conventions one can access the application from the REPL.
 
     examples/greeter_1$ clj
-    user=> (require '[greeter :refer :all])
-    user=> (greet "Daniel")
+    user=> (require 'greeter)
+    user=> (greeter/greet "Daniel")
     "Hello, Daniel!"
 
 ### Namespaces
