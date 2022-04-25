@@ -121,7 +121,7 @@ Inside the REPL one can access it then.
 
     examples/greeter_2$ clj
     user=> (require 'greeter.greeter)
-    user=> (greeter/greet "Daniel")
+    user=> (greeter.greeter/greet "Daniel")
     "Hello, Daniel!"
 
 Note that when using namespaces consisting of multiple segments, i.e. `the-greeter`, 
