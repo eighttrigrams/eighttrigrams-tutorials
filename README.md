@@ -103,7 +103,7 @@ need to reload the corresponding namespace.
 user=> (require 'greeter :reload)
 ```
  
-If the namespace to be loaded depends on another namespace (let's say `greeter` depended on `greeter-helper`), and that one (i.e. `greeter-helper`) got changed, we can
+If the namespace to be loaded depends on another namespace (let's say `greeter` depended on `helper`), and that one (i.e. `helper`) got changed, we can
 transitively reload via
 
 ```
