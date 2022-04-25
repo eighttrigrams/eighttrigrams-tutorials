@@ -192,7 +192,7 @@ use within another namespace. `require` can take multiple of those entries. For 
 (ns hello
   (:require a-namespace
   (:require [greeter.greeter :as g]
-            [aanother-namespace :as ans]))
+            [another-namespace :as ans]))
 ```
 
 ## Minimalistic dependency management
