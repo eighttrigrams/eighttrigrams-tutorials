@@ -72,9 +72,9 @@ you can very easily set up projects, following very limited conventions.
 
 ```clojure
 (ns hello
-  (:require [greeter :refer :all]))
+  (:require greeter))
 (defn -main [& args]
-  (greet (first args)))
+  (greeter/greet (first args)))
 ```
 
 Run it
