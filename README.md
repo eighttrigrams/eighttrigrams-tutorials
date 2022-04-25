@@ -386,12 +386,7 @@ or execute a single test
 
     examples/lein_adder$ lein test :only adder-test/test-adder
 
-## Details
-
-### Namespaces and filenames
-
-Note that when a namespace contains `-` as in `the-greeter` the filename
-has to be `the_greeter.clj`.
+## Appendix
 
 ### Require
 
