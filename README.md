@@ -191,7 +191,6 @@ use within another namespace. `require` can take multiple of those entries. For 
 ```
 (ns hello
   (:require a-namespace
-  (:require [greeter.greeter :as g]
             [another-namespace :as ans]))
 ```
 
