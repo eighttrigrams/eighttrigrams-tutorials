@@ -127,6 +127,38 @@ Inside the REPL one can access it then.
 Note that when using namespaces consisting of multiple segments, i.e. `the-greeter`, 
 the namespace declaration would be `(ns the-greeter)` (kebap-case) but the file name would be `the_greeter.clj` (snake case).
 
+If not in the first examples, at least by now it would be understandable if you are irritated
+by the long prefix to the `greet` function call. But this is easily treated. If we use 
+
+```
+(ns hello
+  (:require [greeter.greeter :as g]))
+```
+
+or respectively
+
+```
+user=> (require '[greeter.greeter :as g]))
+```
+
+then we can call the function like this
+
+```
+(g/greet "Daniel")
+```
+
+This also works for the shorter example where greeter was not yet in the subdirectory (`(require [greeter :as g])`).
+
+Note that `greeter.greeter` and `[greeter.greeter :as g]` are two forms to require a single dependency for
+use within another namespace. `require` can take multiple of those entries. For example
+
+```
+(ns hello
+  (:require a-namespace
+  (:require [greeter.greeter :as g]
+            [aanother-namespace :as ans]))
+```
+
 ## Minimalistic dependency management
 
 The first build tool you should check out is **deps.edn**. 
