@@ -1,7 +1,7 @@
 # Clojure Tutorial
 
 This is intended to bridge the gap between language-focused tutorials and setting 
-up a projects.
+up a project.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ arrow up button. Now this is done just calling `clj`.
 
 You also can put code into a file and execute it from the command line.
 
-[./examples/add_1.clj](./examples/add_1.clj):
+[examples/add_1.clj](./examples/add_1.clj):
 
 ```clojure
 (prn (+ 1 1))
@@ -39,7 +39,7 @@ Run it as a script with
 
 or load a script 
 
-[./examples/add_2.clj](./examples/add_2.clj):
+[examples/add_2.clj](./examples/add_2.clj):
 
 ```clojure
 (def add +)
@@ -58,9 +58,13 @@ However, there is a much better way in Clojure, where it is very easy to set up
 ## Minimal projects
 
 As soon as you want to distribute code across multiple source files, 
-you can very easily set up projects, following very limited conventions. 
+you can very easily set up projects, following very limited conventions.
+The first of these is creating source files within a `src` subdirectory.
+The second one is having a correspondence between file names and namespace declarations
+at the beginning of the files. More on namespaces is to be said in section after this one. Here
+it should mean for us just *file* or *context* or *module*. But first let's look at an example.
 
-[./examples/greeter_1/src/greeter.clj](./examples/greeter_1/src/greeter.clj):
+[examples/greeter_1/src/greeter.clj](./examples/greeter_1/src/greeter.clj):
 
 ```clojure
 (ns greeter)
@@ -68,13 +72,13 @@ you can very easily set up projects, following very limited conventions.
   (prn (str "Hello, " name "!")))
 ```
 
-[./examples/greeter_1/src/hello.clj](./examples/greeter_1/src/hello.clj):
+[examples/greeter_1/src/hello.clj](./examples/greeter_1/src/hello.clj):
 
 ```clojure
 (ns hello
-  (:require [greeter :refer :all]))
+  (:require greeter))
 (defn -main [& args]
-  (greet (first args)))
+  (greeter/greet (first args)))
 ```
 
 Run it
@@ -87,17 +91,52 @@ examples/greeter_1$ clj -m hello Daniel
 Adhering to these conventions one can access the application from the REPL.
 
     examples/greeter_1$ clj
-    user=> (require '[greeter :refer :all])
-    user=> (greet "Daniel")
+    user=> (require 'greeter) ; the syntax differs slightly from how it is used in a file
+    user=> (greeter/greet "Daniel")
     "Hello, Daniel!"
 
-### Namespaces
+In this case the `-main` function does not get executed. But now we can play around 
+with the application interactively. If we change something one of the files, we
+need to reload the corresponding namespace.
+
+```
+user=> (require 'greeter :reload)
+```
+ 
+If the namespace to be loaded depends on another namespace (let's say `greeter` depended on `helper`), and that one (i.e. `helper`) got changed, we can
+transitively reload via
+
+```
+user=> (require 'greeter :reload-all)
+```
+
+After that, another function call to `greeter/greet` should reflect possible changes made to the function.
+
+We have yet another option to call our `greet` function, namely to jump into the `greeter` namespace
+and execute it from there. 
+
+```
+user=> (in-ns 'greeter)
+greeter=> (greet "Daniel")
+```
+
+**Note** that a `(require 'greeter)` call is necessary before we are able to 
+do this. If we don't, the function call we intend to do will not work. 
+
+So that is what the `user=>` prompt is about. It shows us that when we open the REPL we operate
+in the user namespace. One thing that is very useful to know is that we can create a namespace file
+`src/user.clj` (containing the usual `(ns user)` namespace declaration at the beginning) which may contain
+some arbitrary code which gets automatically executed
+when the REPL is started. Since the code can consist of function definitions as well as some function call on
+the top level, this is ideal for some initialization of the REPL-session that you may wish to perfom.
+
+### More on namespaces
 
 Clojure namespaces correspond to Java namespaces, such that the file hierarchy 
 aligns with the namespace names. In the next example greeter is located one level below
 from where it was in the last example.
 
-[./examples/greeter_2/src/greeter/greeter.clj](./examples/greeter_2/src/greeter/greeter.clj):
+[examples/greeter_2/src/greeter/greeter.clj](./examples/greeter_2/src/greeter/greeter.clj):
 
 ```clojure
 (ns greeter.greeter)
@@ -105,21 +144,55 @@ from where it was in the last example.
   (prn (str "Hello, " name "!")))
 ```
 
-[./examples/greeter_2/src/hello.clj](./examples/greeter_2/src/hello.clj):
+[examples/greeter_2/src/hello.clj](./examples/greeter_2/src/hello.clj):
 
 ```clojure
 (ns hello
-  (:require [greeter.greeter :refer :all]))
+  (:require greeter.greeter))
 (defn -main [& args]
-  (greet (first args)))
+  (greeter.greeter/greet (first args)))
 ```
 
 Inside the REPL one can access it then.
 
     examples/greeter_2$ clj
-    user=> (require '[greeter.greeter :refer :all])
-    user=> (greet "Daniel")
+    user=> (require 'greeter.greeter)
+    user=> (greeter.greeter/greet "Daniel")
     "Hello, Daniel!"
+
+Note that when using namespaces consisting of multiple segments, i.e. `the-greeter`, 
+the namespace declaration would be `(ns the-greeter)` (kebap-case) but the file name would be `the_greeter.clj` (snake case).
+
+If not in the first examples, at least by now it would be understandable if you are irritated
+by the long prefix to the `greet` function call. But this is easily treated. If we use 
+
+```
+(ns hello
+  (:require [greeter.greeter :as g]))
+```
+
+or respectively
+
+```
+user=> (require '[greeter.greeter :as g]))
+```
+
+then we can call the function like this
+
+```
+(g/greet "Daniel")
+```
+
+This also works for the shorter example where greeter was not yet in the subdirectory (`(require [greeter :as g])`).
+
+Note that `greeter.greeter` and `[greeter.greeter :as g]` are two forms to require a single dependency for
+use within another namespace. `require` can take multiple of those entries. For example
+
+```
+(ns hello
+  (:require a-namespace
+            [another-namespace :as ans]))
+```
 
 ## Minimalistic dependency management
 
@@ -129,20 +202,20 @@ from maven, from github, as well
 as on the local file system, such that the files from the last 
 example could also be laid out as follows:
 
-[./examples/deps_greeter/application/deps.edn](./examples/deps_greeter/application/deps.edn):
+[examples/deps_greeter/application/deps.edn](./examples/deps_greeter/application/deps.edn):
 
 ```clojure
 {:deps
  {greeter {:local/root "../library"}}}
 ```
 
-[./examples/deps_greeter/library/deps.edn](./examples/deps_greeter/library/deps.edn):
+[examples/deps_greeter/library/deps.edn](./examples/deps_greeter/library/deps.edn):
 
 ```clojure
 {}
 ```
 
-[./examples/deps_greeter/library/src/greeter.clj](./examples/deps_greeter/library/src/greeter.clj):
+[examples/deps_greeter/library/src/greeter.clj](./examples/deps_greeter/library/src/greeter.clj):
 
 ```clojure
 (ns greeter)
@@ -150,7 +223,7 @@ example could also be laid out as follows:
   (prn (str "Hello, " name "!")))
 ```
 
-[./examples/deps_greeter/application/src/hello.clj](./examples/deps_greeter/application/src/hello.clj):
+[examples/deps_greeter/application/src/hello.clj](./examples/deps_greeter/application/src/hello.clj):
 
 ```clojure
 (ns hello
@@ -179,7 +252,7 @@ Again, we can "reach" inside the application using the REPL.
 This of course does work not only for local libraries, 
 but for dependencies from github and maven as well.
 
-[./examples/deps/deps.edn](./examples/deps/deps.edn):
+[examples/deps/deps.edn](./examples/deps/deps.edn):
 
 ```clojure
 {:deps {org.clojure/java.classpath {:mvn/version "1.0.0"}}}
@@ -192,13 +265,18 @@ but for dependencies from github and maven as well.
     user=> (system-classpath)
     [Shows classpath info]
 
+Working with local dependencies is great, because code changes are directly
+available, like when you have the code in a separate namespace. Yet it already is
+in a form where it can be made a 'external' github dependency by just changing 
+from `:local/root` to `:git/url`.
+
 ## Minimalistic testing
 
-Using it you can install a test runner, which 
+Using the deps tool you can install a test runner, which 
 facilitates writing unit tests with **clojure.test**, 
 which is also part of the language.
 
-[./examples/adder/deps.edn](./examples/adder/deps.edn):
+[examples/adder/deps.edn](./examples/adder/deps.edn):
 
 ```clojure
 {
@@ -210,13 +288,13 @@ which is also part of the language.
 }
 ```
 
-[./examples/adder/src/adder.clj](./examples/adder/src/adder.clj):
+[examples/adder/src/adder.clj](./examples/adder/src/adder.clj):
 ```clojure
 (ns adder)
 (def add +)
 ```
 
-[./examples/adder/test/adder_test.clj](./examples/adder/test/adder_test.clj):
+[examples/adder/test/adder_test.clj](./examples/adder/test/adder_test.clj):
 
 ```clojure
 (ns adder-test
@@ -253,7 +331,7 @@ and single tests with (separate test name from namespace with `/`)
 A more powerful build tool is **Leiningen** (or **lein** for short). The greeter example
 looks like this, using the opportunity to show how Java can be mixed in when using Leiningen.
 
-[./examples/lein_greeter/src/clj/hello.clj](./examples/lein_greeter/src/clj/hello.clj):
+[examples/lein_greeter/src/clj/hello.clj](./examples/lein_greeter/src/clj/hello.clj):
 
 ```clojure
 (ns hello 
@@ -262,7 +340,7 @@ looks like this, using the opportunity to show how Java can be mixed in when usi
   (Greeter/greet (first args)))
 ```
 
-[./examples/lein_greeter/src/java/Greeter.java](./examples/lein_greeter/src/java/Greeter.java):
+[examples/lein_greeter/src/java/Greeter.java](./examples/lein_greeter/src/java/Greeter.java):
 ```java
 public class Greeter {
     public static void greet(String name) {
@@ -271,7 +349,7 @@ public class Greeter {
 }
 ```
 
-[./examples/lein_greeter/project.clj](./examples/lein_greeter/project.clj):
+[examples/lein_greeter/project.clj](./examples/lein_greeter/project.clj):
 
 ```clojure
 (defproject lein-greeter "0.1.0-SNAPSHOT"
@@ -294,15 +372,15 @@ The src and test code is the same as in the the `examples/adder` example.
 
 See
 
-[./examples/lein_adder/src/adder.clj](./examples/lein_adder/src/adder.clj) 
+[examples/lein_adder/src/adder.clj](./examples/lein_adder/src/adder.clj) 
 
 and
 
-[./examples/lein_adder/test/adder_test.clj](./examples/lein_adder/test/adder_test.clj).
+[examples/lein_adder/test/adder_test.clj](./examples/lein_adder/test/adder_test.clj).
 
 The Leiningen project description includes the `test` path as an additional source path. 
 
-[./examples/lein_adder/project.clj](./examples/lein_adder/project.clj):
+[examples/lein_adder/project.clj](./examples/lein_adder/project.clj):
 
 ```clojure
 (defproject lein-adder "0.1.0-SNAPSHOT"
@@ -326,12 +404,7 @@ or execute a single test
 
     examples/lein_adder$ lein test :only adder-test/test-adder
 
-## Details
-
-### Namespaces and filenames
-
-Note that when a namespace contains `-` as in `the-greeter` the filename
-has to be `the_greeter.clj`.
+## Appendix
 
 ### Require
 
@@ -400,7 +473,3 @@ Rename a function like this
   (:require [greeter :as g :refer [greet] :rename {greet gr}]))
 (g/gr "Daniel")
 ```
-
-#### Scripting
-
-See `:reload` and `:reload-all` options of require.
