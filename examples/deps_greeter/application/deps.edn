@@ -1,2 +1,2 @@
 {:deps
- {greeter {:local/root "../library"}}}
+ {greeter/greeter {:local/root "../library"}}}
